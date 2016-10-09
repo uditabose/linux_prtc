@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$#" -ne 2 ]; then
+	echo "Usage : ./compile.sh <file> <object_file>"
+	exit
+fi
+
 echo 
 echo "Compiling $1 to executable $2"
 echo "-----------------------------"
