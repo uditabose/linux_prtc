@@ -27,3 +27,11 @@
 *.exe
 *.out
 *.app
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
