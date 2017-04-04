@@ -29,6 +29,7 @@
 *.app
 
 # NetBeans related
+nbproject/
 nbproject/private/
 build/
 nbbuild/
