@@ -42,3 +42,4 @@ char *getenv_th(const char *name) {
 	pthread_mutex_unlock(&env_mutex);
 	return(NULL);
 }
+
