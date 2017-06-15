@@ -38,6 +38,9 @@ dist/
 nbdist/
 .nb-gradle/
 
+# macos
+.DS_Store
+
 # Compiled executable
 apue.3e/advio/deadlock
 apue.3e/advio/mandatory

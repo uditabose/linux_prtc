@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FAKE_SERVICE=fake_service
+DEFAULT=/etc/default # RHEL : /etc/sysconfig
+LOG=/var/log/"$FAKE_SERVICE"
+
+."$DEFAULT/$FAKE_SERVICE"
+
+case "$1" in
+	start ) echo "Starting $FAKE_SERVICE... "
+		touch /var/lock/subsys/"$FAKE_SERVICE"
+		echo "$0 start at $(date)" >> "$LOG"
+		if [[ $VAR1 = "true" ]]; then
+			echo "VAR1 set to true" >> "$LOG"
+		fi
+		echo
+		;;
+	stop ) echo "Stopping $FAKE_SERVICE... "
+		echo "$0 stop at $(date)" >> "$LOG"
+		if [[ $VAR2 = "true" ]]; then
+			echo "VAR2 set to true" >> "$LOG"
+		fi
+		rm -f /var/lock/subsys/"$FAKE_SERVICE"
+		;;
+	* )
+		echo "Usage: fake_service {start | stop}"
+		exit 1
+		;;
+esac
+exit 0
