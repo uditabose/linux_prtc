@@ -9,3 +9,4 @@ LOG=/var/log/"$FAKE_SERVICE"
 ./scp.sh fake_service_def
 ./scp.sh fake_service_init 
 ./scp.sh lab4.1.sh
+./scp.sh fake.service
