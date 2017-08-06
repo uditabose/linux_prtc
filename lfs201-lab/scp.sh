@@ -5,4 +5,4 @@ echo
 
 chmod +x "$1"
 
-scp "$1" pi@192.168.0.7:/home/pi/spaces/workspace/shell
+scp "$1" rasp-dev:/home/pi/spaces/workspace/shell
