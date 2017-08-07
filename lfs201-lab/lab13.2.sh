@@ -46,15 +46,15 @@ sudo su root -c "echo $PART_NEW $MNT_NEW ext4 usrquota 1 2 >> $FSTAB"
 sudo su root -c "echo $IMG_FILE $MNT_NEW ext4 loop,usrquota 1 2 >> $FSTAB"
 
 # remount 
-sudo mount -o remount "$MNTPNT"
+sudo mount -o remount "$MNT_NEW"
 
 # check for quota
-sudo quotacheck -u "$MNTPNT"
-sudo quotaon -u "$MNTPNT"
+sudo quotacheck -u "$MNT_NEW"
+sudo quotaon -u "$MNT_NEW"
 
 # try to create big files on mountpoint
-sudo chown pi:pi -Rv "$MNTPNT"
-cd "$MNTPNT"
+sudo chown pi:pi -Rv "$MNT_NEW"
+cd "$MNT_NEW"
 dd if=/dev/zero of=big1 bs=1024 count=200
 dd if=/dev/zero of=big2 bs=1024 count=400
 
