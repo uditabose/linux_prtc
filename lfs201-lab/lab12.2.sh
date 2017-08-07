@@ -7,7 +7,7 @@ IMG_FILE=imagefile
 PART=/dev/mmcblk0
 MNTPNT=/mnt/tempdir
 
-# create a fat file if not there
+# delete a fat file if there
 if [[ -f "$IMG_FILE" ]]; then
 	rm -f "$IMG_FILE"
 fi
