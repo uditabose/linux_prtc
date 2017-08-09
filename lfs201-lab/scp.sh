@@ -6,4 +6,4 @@ echo
 chmod +x "$@"
 
 #scp "$1" rasp-dev:/home/pi/spaces/workspace/shell
-scp "$@" dev2-remote:/home/papa/spaces/devspace/shell
+scp "$@" dev2:/home/papa/spaces/devspace/shell
