@@ -1,0 +1,5 @@
+echo "from dmesg: my_write+0x54/0x89"
+echo "in gdb:"
+echo "disassemble /m my_write,+0x89 (length)"
+echo "0x54 = 84 dec"
+echo "search for 0x0000000000000104 <my_write+84>:"

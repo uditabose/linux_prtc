@@ -1,0 +1,47 @@
+Signed-off-by: Jerry Cooperstein <coop@linuxfoundation.org>
+
+diff -Nur inux-4.3/arch/x86/entry/syscalls/syscall_32.tbl linux-4.3_patched/arch/x86/entry/syscalls/syscall_32.tbl
+--- linux-4.3/arch/x86/entry/syscalls/syscall_32.tbl	2015-10-18 18:08:42.000000000 -0500
++++ linux-4.3_patched/arch/x86/entry/syscalls/syscall_32.tbl	2015-10-24 14:17:07.092969130 -0500
+@@ -382,3 +382,4 @@
+ 373	i386	shutdown		sys_shutdown
+ 374	i386	userfaultfd		sys_userfaultfd
+ 375	i386	membarrier		sys_membarrier
++376	i386	my_syscall		sys_my_syscall
+diff -Nur linux-4.3/arch/x86/entry/syscalls/syscall_64.tbl linux-4.3_patched/arch/x86/entry/syscalls/syscall_64.tbl
+--- linux-4.3/arch/x86/entry/syscalls/syscall_64.tbl	2015-10-18 18:08:42.000000000 -0500
++++ linux-4.3_patched/arch/x86/entry/syscalls/syscall_64.tbl	2015-10-24 14:17:40.338967496 -0500
+@@ -331,7 +331,7 @@
+ 322	64	execveat		stub_execveat
+ 323	common	userfaultfd		sys_userfaultfd
+ 324	common	membarrier		sys_membarrier
+-
++325	common  my_syscall              sys_my_syscall
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+ # for native 64-bit operation.
+diff -Nur linux-4.3/kernel/sys.c linux-4.3_patched/kernel/sys.c
+--- linux-4.3/kernel/sys.c	2015-10-18 18:08:42.000000000 -0500
++++ linux-4.3_patched/kernel/sys.c	2015-10-24 14:18:17.176965686 -0500
+@@ -2429,3 +2429,21 @@
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++/* Adding a dynamical system call */
++struct my_sc_struct {
++	long (*fun)(unsigned long p1);
++} my_sc = {
++	NULL};
++EXPORT_SYMBOL(my_sc);
++
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++	struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++
++	pr_info("Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++		p1, jiffies);
++	if (!s || !s->fun)
++		return -ENOSYS;
++	return s->fun(p1);
++}

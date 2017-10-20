@@ -1,0 +1,135 @@
+I think I am back ;)
+You sent: Hi
+Hi
+Srivaths
+SMessage from Srivaths: Hi
+Hi
+Message from Srivaths: good afternoon
+good afternoon
+You sent: https://www.kernel.org/doc/gorman/
+https://www.kernel.org/doc/gorman/
+Rodny Molina
+RMMessage from Rodny Molina: i guess it would be possible to allocate huge_pages from physically contiguous memory, right? Let's say i'm building a I/O descriptors for my net I/O driver.
+i guess it would be possible to allocate huge_pages from physically contiguous memory, right? Let's say i'm building a I/O descriptors for my net I/O driver.
+Message from Rodny Molina: no, i'm not talking about i/o port
+no, i'm not talking about i/o port
+Message from Rodny Molina: i'm talking about network isr's
+i'm talking about network isr's
+Message from Rodny Molina: yes
+yes
+Message from Rodny Molina: yes, something like DMA, right
+yes, something like DMA, right
+Message from Rodny Molina: ok
+ok
+Message from Rodny Molina: yes, DMA has that requirement (contiguous-mem) that's why i was asking if it can be extended to hugepages
+yes, DMA has that requirement (contiguous-mem) that's why i was asking if it can be extended to hugepages
+Message from Rodny Molina: yes, thanks
+yes, thanks
+Srivaths
+SMessage from Srivaths: libhugetlbfs works for malloc..Is there something similar for c++ new
+libhugetlbfs works for malloc..Is there something similar for c++ new
+You sent: 11:15 Central
+11:15 Central
+You sent: https://people.eecs.berkeley.edu/~kubitron/cs194-24/hand-outs/bonwick_slab.pdf
+https://people.eecs.berkeley.edu/~kubitron/cs194-24/hand-outs/bonwick_slab.pdf
+You sent: http://localhost:8822/source/xref/src/linux-4.13.3/Documentation/driver-model/devres.txt
+http://localhost:8822/source/xref/src/linux-4.13.3/Documentation/driver-model/devres.txt
+Srivaths
+SMessage from Srivaths: why is the libc mapped in multiple regions
+why is the libc mapped in multiple regions
+Rodny Molina
+RMMessage from Rodny Molina: is due to ELF multiple segments
+is due to ELF multiple segments
+Message from Rodny Molina: https://stackoverflow.com/questions/20969109/why-proc-id-maps-has-multiple-entries-for-shared-libraries
+https://stackoverflow.com/questions/20969109/why-proc-id-maps-has-multiple-entries-for-shared-libraries
+You sent: 14:00 central
+14:00 central
+You sent: https://www.safaribooksonline.com/library/view/linux-system-programming/0596009585/ch04s03.html
+https://www.safaribooksonline.com/library/view/linux-system-programming/0596009585/ch04s03.html
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: so if kernel mem usage goes above 1Gb it panics?
+so if kernel mem usage goes above 1Gb it panics?
+Message from Nikos Triantafillis: since swap can't be used
+since swap can't be used
+You sent: https://github.com/RobertBerger/procrank_linux
+https://github.com/RobertBerger/procrank_linux
+You sent: git://github.com/hoytech/vmtouch.git
+git://github.com/hoytech/vmtouch.git
+Rodny Molina
+RMMessage from Rodny Molina: latest book you're talking about is 4.x based?
+latest book you're talking about is 4.x based?
+Message from Rodny Molina: looks like ther's nothing in the market higher than 2.6
+looks like ther's nothing in the market higher than 2.6
+Message from Rodny Molina: yes
+yes
+Message from Rodny Molina: i will start with German then first ;-)
+i will start with German then first ;-)
+Message from Rodny Molina: that's fine, what i'm missing (network namespaces, i/o network-stack enhancements) should be online anyways.
+that's fine, what i'm missing (network namespaces, i/o network-stack enhancements) should be online anyways.
+Message from Rodny Molina: yes, i have that
+yes, i have that
+Message from Rodny Molina: ;-)
+;-)
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: http://elk.informatik.hs-augsburg.de/tmp/elinux/Buecher/Linux Kernel Networking - Implementation and Theory.pdf
+http://elk.informatik.hs-augsburg.de/tmp/elinux/Buecher/Linux Kernel Networking - Implementation and Theory.pdf
+Message from Nikos Triantafillis: here
+here
+Rodny Molina
+RMMessage from Rodny Molina: same here, link broken from my side ;-)
+same here, link broken from my side ;-)
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: "elk.informatik.hs-augsburg.de/tmp/elinux/Buecher/Linux Kernel Networking - Implementation and Theory.pdf"
+"elk.informatik.hs-augsburg.de/tmp/elinux/Buecher/Linux Kernel Networking - Implementation and Theory.pdf"
+Rodny Molina
+RMMessage from Rodny Molina: good stuff, thanks
+good stuff, thanks
+You sent: https://www.packtpub.com/packt/offers/free-learning
+https://www.packtpub.com/packt/offers/free-learning
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: LOL
+LOL
+Rodny Molina
+RMMessage from Rodny Molina: this is the same fops struct that we use for regular file-descriptors, sockets, etc, right?
+this is the same fops struct that we use for regular file-descriptors, sockets, etc, right?
+Message from Rodny Molina: sockets is just another fd, so should be the same
+sockets is just another fd, so should be the same
+Message from Rodny Molina: sure, the function-pointers for socket ops will be very different
+sure, the function-pointers for socket ops will be very different
+Message from Rodny Molina: ok
+ok
+You sent: https://www.amazon.com/clouddrive/share/PGEk24b5vxREjh5oqEwDsllLIbuF3wJkSxlXZE6eS2p/folder/Lj11IC92THaEMwPCNeDMFA?_encoding=UTF8&*Version*=1&*entries*=0&mgh=1
+https://www.amazon.com/clouddrive/share/PGEk24b5vxREjh5oqEwDsllLIbuF3wJkSxlXZE6eS2p/folder/Lj11IC92THaEMwPCNeDMFA?_encoding=UTF8&*Version*=1&*entries*=0&mgh=1
+Rodny Molina
+RMMessage from Rodny Molina: yes, please send the update files when done, that's nice to have
+yes, please send the update files when done, that's nice to have
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: sounds like if the process is in the uninteruptible sleeping state then it can't be killed
+sounds like if the process is in the uninteruptible sleeping state then it can't be killed
+Message from Nikos Triantafillis: which begs the question - why allow uninterrutpible
+which begs the question - why allow uninterrutpible
+Message from Nikos Triantafillis: rather than require those who want it to block out anything but SIGKILL/SIGSTOP
+rather than require those who want it to block out anything but SIGKILL/SIGSTOP
+Rodny Molina
+RMMessage from Rodny Molina: https://lwn.net/Articles/288056/
+https://lwn.net/Articles/288056/
+Message from Rodny Molina: i remember (barely) that Solaris folks introduced a RESTART syscall flag to fix that problem
+i remember (barely) that Solaris folks introduced a RESTART syscall flag to fix that problem
+Message from Rodny Molina: so RESTART is still not default
+so RESTART is still not default
+Message from Rodny Molina: yep, makes sense
+yep, makes sense
+Message from Rodny Molina: in network world we signals (poll, epoll, select)
+in network world we signals (poll, epoll, select)
+Message from Rodny Molina: understood, i was just trying to say that we cannot run away from 'signals' ;-)
+understood, i was just trying to say that we cannot run away from 'signals' ;-)
+Message from Rodny Molina: isn't poll sends a sigalarm when it timeouts?
+isn't poll sends a sigalarm when it timeouts?
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: signal is one of the most difficult definitions in Unix/C
+signal is one of the most difficult definitions in Unix/C
+You sent: https://training.linuxfoundation.org/surveys/evaluation
+https://training.linuxfoundation.org/surveys/evaluation
+You sent: 8KGJBR
+8KGJBR
+

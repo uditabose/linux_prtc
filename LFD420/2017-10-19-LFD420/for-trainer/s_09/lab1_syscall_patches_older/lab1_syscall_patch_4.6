@@ -1,0 +1,47 @@
+Signed-off-by: Jerry Cooperstein <coop@linuxfoundation.org>
+
+diff -Nur linux-4.6/arch/x86/entry/syscalls/syscall_32.tbl linux-4.6_patched/arch/x86/entry/syscalls/syscall_32.tbl
+--- linux-4.6/arch/x86/entry/syscalls/syscall_32.tbl	2016-05-01 17:52:31.000000000 -0500
++++ linux-4.6_patched/arch/x86/entry/syscalls/syscall_32.tbl	2016-05-03 10:49:38.689392581 -0500
+@@ -386,3 +386,4 @@
+ 377	i386	copy_file_range		sys_copy_file_range
+ 378	i386	preadv2			sys_preadv2
+ 379	i386	pwritev2		sys_pwritev2
++380	i386	my_syscall		sys_my_syscall
+diff -Nur linux-4.6/arch/x86/entry/syscalls/syscall_64.tbl linux-4.6_patched/arch/x86/entry/syscalls/syscall_64.tbl
+--- linux-4.6/arch/x86/entry/syscalls/syscall_64.tbl	2016-05-01 17:52:31.000000000 -0500
++++ linux-4.6_patched/arch/x86/entry/syscalls/syscall_64.tbl	2016-05-03 10:50:07.926731175 -0500
+@@ -335,6 +335,7 @@
+ 326	common	copy_file_range		sys_copy_file_range
+ 327	64	preadv2			sys_preadv2
+ 328	64	pwritev2		sys_pwritev2
++329	common  my_syscall              sys_my_syscall
+ 
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+diff -Nur linux-4.6/kernel/sys.c linux-4.6_patched/kernel/sys.c
+--- linux-4.6/kernel/sys.c	2016-05-03 10:53:15.245493658 -0500
++++ linux-4.6_patched/kernel/sys.c	2016-05-03 10:50:57.040620122 -0500
+@@ -2432,3 +2432,22 @@
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++/* Adding a dynamical system call */
++struct my_sc_struct {
++	long (*fun)(unsigned long p1);
++} my_sc = {
++	NULL};
++EXPORT_SYMBOL(my_sc);
++
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++	struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++
++	pr_info("Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++		p1, jiffies);
++	if (!s || !s->fun)
++		return -ENOSYS;
++	return s->fun(p1);
++}
++

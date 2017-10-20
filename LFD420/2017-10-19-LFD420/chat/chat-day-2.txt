@@ -1,0 +1,198 @@
+You sent: Hi
+Hi
+Udita
+UMessage from Udita: Hi @Robert, I hear no sound. Have you started to present already ?
+Hi @Robert, I hear no sound. Have you started to present already ?
+Message from Udita: Thanks!
+Thanks!
+You sent: https://lwn.net/Articles/692704/
+https://lwn.net/Articles/692704/
+You sent: https://lwn.net/Articles/692705/
+https://lwn.net/Articles/692705/
+Nikos
+NMessage from Nikos: preemption disabling is for user processes?
+preemption disabling is for user processes?
+You sent: https://pastebin.com/u26j0LjQ
+https://pastebin.com/u26j0LjQ
+Nikos
+NMessage from Nikos: is it meant to be edited directly?
+is it meant to be edited directly?
+Message from Nikos: is a restart required after config changes?
+is a restart required after config changes?
+You sent: 11:10
+11:10
+You sent: https://pastebin.com/wBeDPDeg
+https://pastebin.com/wBeDPDeg
+Rodny Molina
+RMMessage from Rodny Molina: pastebin link is not working for me, perhaps a fw issue. Anyone else seeing this?
+pastebin link is not working for me, perhaps a fw issue. Anyone else seeing this?
+Message from Rodny Molina: right
+right
+Message from Rodny Molina: link broken
+link broken
+You sent: https://pastebin.com/wBeDPDeg
+https://pastebin.com/wBeDPDeg
+Nikos
+NMessage from Nikos: works for me
+works for me
+Isaac E (Desk)
+I(Message from Isaac E (Desk): I can see the info on pastebin
+I can see the info on pastebin
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: works for me
+works for me
+Udita
+UMessage from Udita: worked for me
+worked for me
+Rodny Molina
+RMMessage from Rodny Molina: thanks, got it
+thanks, got it
+Nikos
+NMessage from Nikos: Would it kill them to use an enum to get the number? lol
+Would it kill them to use an enum to get the number? lol
+Rodny Molina
+RMMessage from Rodny Molina: kernel compilation in my VM is taking quite a while
+kernel compilation in my VM is taking quite a while
+Isaac E (Desk)
+I(Message from Isaac E (Desk): Back to Rodny comments, are there any tips for performing the compilation any faster? Are things like distcc still a thing?
+Back to Rodny comments, are there any tips for performing the compilation any faster? Are things like distcc still a thing?
+Srivaths
+SMessage from Srivaths: What is register trace? I encounter this often in my module
+What is register trace? I encounter this often in my module
+You sent: https://subutai.io/
+https://subutai.io/
+Isaac E (Desk)
+I(Message from Isaac E (Desk): Thank you.
+Thank you.
+You sent: https://github.com/icecc/icecream
+https://github.com/icecc/icecream
+Nikos
+NMessage from Nikos: is the kernel compilable with ICC?
+is the kernel compilable with ICC?
+You sent: https://llvm.org/
+https://llvm.org/
+Nikos
+NMessage from Nikos: default is to build with -O2?
+default is to build with -O2?
+You sent: http://lttng.org/
+http://lttng.org/
+Nikos
+NMessage from Nikos: 80 chars are enforced? :-)
+80 chars are enforced? 
+Message from Nikos: no need
+no need
+Message from Nikos: i understand
+i understand
+Message from Nikos: readability is more important
+readability is more important
+Message from Nikos: is there a hard rule on function parameters to match minimum # of registers on lowest common arch?
+is there a hard rule on function parameters to match minimum # of registers on lowest common arch?
+Message from Nikos: lol heretic movements
+lol heretic movements
+You sent: https://git-scm.com/docs/git-worktree
+https://git-scm.com/docs/git-worktree
+Nikos
+NMessage from Nikos: what are the testing requirements for upstreamed code?
+what are the testing requirements for upstreamed code?
+Message from Nikos: does the scheduler run on all cores?
+does the scheduler run on all cores?
+Rodny Molina
+RMMessage from Rodny Molina: irq's are automatically load-balanced among cpu's, right? no system-admin intervention required to balance cpu load
+irq's are automatically load-balanced among cpu's, right? no system-admin intervention required to balance cpu load
+Message from Rodny Molina: ok
+ok
+You sent: 14:15 Central
+14:15 Central
+You sent: I'm back
+I'm back
+You sent: Please ping when you are there
+Please ping when you are there
+Nikos
+NMessage from Nikos: back
+back
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Any of the LinkedIn folks work with Srihari Murali or Demian Lessa?
+Any of the LinkedIn folks work with Srihari Murali or Demian Lessa?
+Nikos
+NMessage from Nikos: nope
+nope
+Message from Nikos: different org from us
+different org from us
+Isaac Elbaz
+IEMessage from Isaac Elbaz: I see, thanks!
+I see, thanks!
+Nikos
+NMessage from Nikos: and this applies only to suse?
+and this applies only to suse?
+Message from Nikos: are you actively developing for the linux kernel?
+are you actively developing for the linux kernel?
+You sent: http://eudyptula-challenge.org/
+http://eudyptula-challenge.org/
+Rodny Molina
+RMMessage from Rodny Molina: Are you aware of any user-space RCU lib?
+Are you aware of any user-space RCU lib?
+Message from Rodny Molina: sweet, was not there last time i check a few years ago
+sweet, was not there last time i check a few years ago
+You sent: http://liburcu.org/
+http://liburcu.org/
+Nikos
+NMessage from Nikos: can the big lock be used outside of the kernel to provide user space serialization of threads?
+can the big lock be used outside of the kernel to provide user space serialization of threads?
+Rodny Molina
+RMMessage from Rodny Molina: raw_spinlock() disables preemtion only for that specific cpu where the spinlock is being created, right?
+raw_spinlock() disables preemtion only for that specific cpu where the spinlock is being created, right?
+Message from Rodny Molina: coz in my mind 'preemption' was a kernel-wide condition
+coz in my mind 'preemption' was a kernel-wide condition
+Message from Rodny Molina: hmm, ok, thanks
+hmm, ok, thanks
+Nikos
+NMessage from Nikos: what's the point to allow interrupts if pre-emption is disabled?
+what's the point to allow interrupts if pre-emption is disabled?
+Message from Nikos: will the signal handler still be called with pre-emption disabled?
+will the signal handler still be called with pre-emption disabled?
+Rodny Molina
+RMMessage from Rodny Molina: if i have the scheduler disabled for a specific cpu, and i want it to handle only the network-traffic irq, what would happen with the associated network softirq? would it run on that cpu? or would it need to go somewhere else?
+if i have the scheduler disabled for a specific cpu, and i want it to handle only the network-traffic irq, what would happen with the associated network softirq? would it run on that cpu? or would it need to go somewhere else?
+Nikos
+NMessage from Nikos: soft irqs need to be scheduled
+soft irqs need to be scheduled
+Message from Nikos: so if you have disabled the scheduler
+so if you have disabled the scheduler
+Message from Nikos: i assume you are screwed
+i assume you are screwed
+Rodny Molina
+RMMessage from Rodny Molina: yep, makes sense
+yep, makes sense
+Message from Rodny Molina: network softirq would need to go to another cpu, so performance suffers
+network softirq would need to go to another cpu, so performance suffers
+Nikos
+NMessage from Nikos: does that happen? you have assigned the irq to the specific CPU
+does that happen? you have assigned the irq to the specific CPU
+Message from Nikos: but this is a soft interrupt
+but this is a soft interrupt
+Rodny Molina
+RMMessage from Rodny Molina: either way, you need net i/o softirq to run in the same processor when the net irq arrive, otherwise cache-misses will kill you
+either way, you need net i/o softirq to run in the same processor when the net irq arrive, otherwise cache-misses will kill you
+Message from Rodny Molina: ah ok
+ah ok
+Message from Rodny Molina: wondering if there's any entry in /proc fs that exposes all cpu-vars?
+wondering if there's any entry in /proc fs that exposes all cpu-vars?
+Message from Rodny Molina: yes
+yes
+Message from Rodny Molina: np i can google it up
+np i can google it up
+Message from Rodny Molina: great, thanks
+great, thanks
+Nikos
+NMessage from Nikos: g night
+g night
+Isaac Elbaz
+IEMessage from Isaac Elbaz: thanks
+thanks
+Udita
+UMessage from Udita: thanks!
+thanks!
+Nikos
+NMessage from Nikos: thanks
+thanks
+

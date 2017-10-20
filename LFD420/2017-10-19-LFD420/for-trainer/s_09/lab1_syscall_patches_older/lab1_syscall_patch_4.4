@@ -1,0 +1,48 @@
+diff --git a/arch/x86/entry/syscalls/syscall_32.tbl b/arch/x86/entry/syscalls/syscall_32.tbl
+index f17705e..05f3a34 100644
+--- a/arch/x86/entry/syscalls/syscall_32.tbl
++++ b/arch/x86/entry/syscalls/syscall_32.tbl
+@@ -383,3 +383,4 @@
+ 374	i386	userfaultfd		sys_userfaultfd
+ 375	i386	membarrier		sys_membarrier
+ 376	i386	mlock2			sys_mlock2
++377	i386	my_syscall		sys_my_syscall
+diff --git a/arch/x86/entry/syscalls/syscall_64.tbl b/arch/x86/entry/syscalls/syscall_64.tbl
+index 314a90b..20f19b7 100644
+--- a/arch/x86/entry/syscalls/syscall_64.tbl
++++ b/arch/x86/entry/syscalls/syscall_64.tbl
+@@ -332,6 +332,7 @@
+ 323	common	userfaultfd		sys_userfaultfd
+ 324	common	membarrier		sys_membarrier
+ 325	common	mlock2			sys_mlock2
++326	common  my_syscall              sys_my_syscall
+ 
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+diff --git a/kernel/sys.c b/kernel/sys.c
+index 6af9212..a0fda57 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -2429,3 +2429,22 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++/* Adding a dynamical system call */
++struct my_sc_struct {
++	long (*fun)(unsigned long p1);
++} my_sc = {
++	NULL};
++EXPORT_SYMBOL(my_sc);
++
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++	struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++
++	pr_info("Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++		p1, jiffies);
++	if (!s || !s->fun)
++		return -ENOSYS;
++	return s->fun(p1);
++}
++

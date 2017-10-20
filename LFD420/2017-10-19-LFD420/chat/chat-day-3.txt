@@ -1,0 +1,157 @@
+Hi
+Srivaths
+SMessage from Srivaths: whats the difference between copy on write and read copy update? Looks like they both mean same thing - you copy the content is written to.
+whats the difference between copy on write and read copy update? Looks like they both mean same thing - you copy the content is written to.
+You sent: http://www.rdrop.com/~paulmck/RCU/
+http://www.rdrop.com/~paulmck/RCU/
+Srivaths
+SMessage from Srivaths: when we use clone does it mean the code is not POSIX compliant
+when we use clone does it mean the code is not POSIX compliant
+Message from Srivaths: ok never seen anyone use clone in user space code
+ok never seen anyone use clone in user space code
+You sent: https://people.redhat.com/anderson/
+https://people.redhat.com/anderson/
+You sent: https://github.com/crash-utility/crash
+https://github.com/crash-utility/crash
+You sent: 11:10 central
+11:10 central
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: what was the tool you were running with graphical cpu representation?
+what was the tool you were running with graphical cpu representation?
+Message from Nikos Triantafillis: yes
+yes
+Message from Nikos Triantafillis: thanks
+thanks
+Message from Nikos Triantafillis: when the image is stripped, how do you load the kcore?
+when the image is stripped, how do you load the kcore?
+Message from Nikos Triantafillis: what's the cmd line?
+what's the cmd line?
+Message from Nikos Triantafillis: so what do you load?
+so what do you load?
+Rodny Molina
+RMMessage from Rodny Molina: this is through /dev/mem, right? so you're not holding the kernel
+this is through /dev/mem, right? so you're not holding the kernel
+Message from Rodny Molina: but as long as you don't 'write' there's no risk, right?
+but as long as you don't 'write' there's no risk, right?
+Message from Rodny Molina: nice
+nice
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: since it gives memory locations
+since it gives memory locations
+Message from Nikos Triantafillis: you can write directly, no?
+you can write directly, no?
+Message from Nikos Triantafillis: not through /dev/mem
+not through /dev/mem
+Rodny Molina
+RMMessage from Rodny Molina: is there anything equivalent to gdb's "info threads" for a particular daemon?
+is there anything equivalent to gdb's "info threads" for a particular daemon?
+Message from Rodny Molina: no, i want to see details of all the tasks within a process/thread-group
+no, i want to see details of all the tasks within a process/thread-group
+Message from Rodny Molina: sure, i can follow the LL
+sure, i can follow the LL
+Message from Rodny Molina: yep, that helps, from there we can get to the leader task_struct
+yep, that helps, from there we can get to the leader task_struct
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: 3rd column in previous output was # of threads?
+3rd column in previous output was # of threads?
+Robert watching
+RWMessage from Robert watching: https://people.redhat.com/anderson/crash_whitepaper/help_pages/ps.html
+https://people.redhat.com/anderson/crash_whitepaper/help_pages/ps.html
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: ah no - the CPU #
+ah no - the CPU #
+You sent: https://github.com/siemens/jailhouse
+https://github.com/siemens/jailhouse
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: what do the server people know anyway... lol
+what do the server people know anyway... lol
+Message from Nikos Triantafillis: does the kernel have any notion of thread groups whereby if one thread in a group is running, now other thread in the group will be schedules?
+does the kernel have any notion of thread groups whereby if one thread in a group is running, now other thread in the group will be schedules?
+Message from Nikos Triantafillis: but scheduling will happen across groups
+but scheduling will happen across groups
+You sent: 14:00 Central
+14:00 Central
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: what priority is assigned to timer related work?
+what priority is assigned to timer related work?
+You sent: https://lwn.net/Articles/178253/
+https://lwn.net/Articles/178253/
+Srivaths
+SMessage from Srivaths: you talked about ramidsk and virtual file sysetm..When we are reading data from ramdisk..how does the addressing work.
+you talked about ramidsk and virtual file sysetm..When we are reading data from ramdisk..how does the addressing work.
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: so when accessing ramdisk it's direct access?
+so when accessing ramdisk it's direct access?
+Message from Nikos Triantafillis: not translation?
+not translation?
+Srivaths
+SMessage from Srivaths: any good resource to read up on scatter gather list?
+any good resource to read up on scatter gather list?
+You sent: https://www.quora.com/How-does-Scatter-Gather-transfer-in-the-Direct-Memory-Access-work
+https://www.quora.com/How-does-Scatter-Gather-transfer-in-the-Direct-Memory-Access-work
+Rodny Molina
+RMMessage from Rodny Molina: i've always found this kernel logical-add vs linear/virtual-add a bit confusing. Both spaces are considered 'virtual' space, right? So the virt-to-phy mapping is what changes between one and the other, correct? Contigous in one case vs random in the other. Am i getting this right?
+i've always found this kernel logical-add vs linear/virtual-add a bit confusing. Both spaces are considered 'virtual' space, right? So the virt-to-phy mapping is what changes between one and the other, correct? Contigous in one case vs random in the other. Am i getting this right?
+Message from Rodny Molina: yes, so if you need phy-contigous you gotta use logical-space, otherwise you can go to virtual-space
+yes, so if you need phy-contigous you gotta use logical-space, otherwise you can go to virtual-space
+Message from Rodny Molina: i'm not sure i get this: "on 64-bit systems kernel virtual-add don't exist".
+i'm not sure i get this: "on 64-bit systems kernel virtual-add don't exist".
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: they do
+they do
+Srivaths
+SMessage from Srivaths: how does kernel know if paricular page or memory access is in cache or in main memory
+how does kernel know if paricular page or memory access is in cache or in main memory
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: i don't think the kernel does
+i don't think the kernel does
+Message from Nikos Triantafillis: this is all CPU/architecture/compiler specific
+this is all CPU/architecture/compiler specific
+Rodny Molina
+RMMessage from Rodny Molina: that's a task for MMU/TLB, kernel is agnostic
+that's a task for MMU/TLB, kernel is agnostic
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: which means lower than the kernel
+which means lower than the kernel
+Rodny Molina
+RMMessage from Rodny Molina: i think 'dmidecode' does that
+i think 'dmidecode' does that
+Message from Rodny Molina: for x86
+for x86
+Srivaths
+SMessage from Srivaths: ok so the kernel queries lower levels and figures out if the cache is hot when scheduling a process ?
+ok so the kernel queries lower levels and figures out if the cache is hot when scheduling a process ?
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: no
+no
+Rodny Molina
+RMMessage from Rodny Molina: 64 bytes cache-line for x86
+64 bytes cache-line for x86
+Srivaths
+SMessage from Srivaths: ok got it so its more of a guess from the kernel during scheduling
+ok got it so its more of a guess from the kernel during scheduling
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: doesn't have to be if you know how caching works.
+doesn't have to be if you know how caching works.
+Message from Nikos Triantafillis: you can aim to optimize
+you can aim to optimize
+Message from Nikos Triantafillis: instruction cache misses which stall the cacheline, really kill performance
+instruction cache misses which stall the cacheline, really kill performance
+Message from Nikos Triantafillis: sorry
+sorry
+Message from Nikos Triantafillis: pipeline
+pipeline
+Srivaths
+SMessage from Srivaths: brendan has another tool called cachestat
+brendan has another tool called cachestat
+Rodny Molina
+RMMessage from Rodny Molina: On the other hand there's an ongoing move to C++ in embedded world, isn't it?
+On the other hand there's an ongoing move to C++ in embedded world, isn't it?
+Message from Rodny Molina: too early ;-)
+too early ;-)
+Message from Rodny Molina: that's a 'feature' ;-)
+that's a 'feature' ;-)
+Nikos Triantafillis
+NTMessage from Nikos Triantafillis: have a good night
+have a good night
+

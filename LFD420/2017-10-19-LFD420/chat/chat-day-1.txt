@@ -1,0 +1,301 @@
+
+You sent: test
+test
+You sent: test
+test
+You sent: another test
+another test
+You sent: Hi Isaac
+Hi Isaac
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Hello
+Hello
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: can you share the link for downloading the doc again?
+can you share the link for downloading the doc again?
+You sent: https://training.linuxfoundation.org/cm/prep/?course=LFD420
+https://training.linuxfoundation.org/cm/prep/?course=LFD420
+You sent: https://training.linuxfoundation.org/cm/LFD420/
+https://training.linuxfoundation.org/cm/LFD420/
+You sent: u: LFtrainingpw: Penguin2014
+u: LFtrainingpw: Penguin2014
+You sent: robert.berger@reliableembeddedsystems.com
+robert.berger@reliableembeddedsystems.com
+You sent: training@linux.com
+training@linux.com
+You sent: https://lkml.org/lkml/2017/10/16/122
+https://lkml.org/lkml/2017/10/16/122
+You sent: https://kernelnewbies.org/Linux_4.13
+https://kernelnewbies.org/Linux_4.13
+You sent: https://www.reliableembeddedsystems.com/2010_10_20/WE-2.1_Berger-paper.pdf
+https://www.reliableembeddedsystems.com/2010_10_20/WE-2.1_Berger-paper.pdf
+You sent: https://training.linuxfoundation.org/surveys/registration/
+https://training.linuxfoundation.org/surveys/registration/
+You sent: 8KGJBR
+8KGJBR
+Nikos
+NMessage from Nikos: done
+done
+Isaac Elbaz
+IEMessage from Isaac Elbaz: +1
++1
+Udita
+UMessage from Udita: done
+done
+Rodny Molina
+RMMessage from Rodny Molina: done
+done
+Srivaths
+SMessage from Srivaths: done
+done
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: +1
++1
+Sadaf Fardeen
+SFMessage from Sadaf Fardeen: done
+done
+Nikos
+NMessage from Nikos: do we know the password for the VMs?
+do we know the password for the VMs?
+Message from Nikos: for username LF student
+for username LF student
+Isaac Elbaz
+IEMessage from Isaac Elbaz: it is `student`
+it is `student`
+Message from Isaac Elbaz: @nikos the password should be `student` if you haven't modified anything.
+@nikos the password should be `student` if you haven't modified anything.
+Nikos
+NMessage from Nikos: ubuntu 16.04 seems a bit unstable
+ubuntu 16.04 seems a bit unstable
+Message from Nikos: the VM ;-P
+the VM ;-P
+Isaac Elbaz
+IEMessage from Isaac Elbaz: I had the same experience he had; I reinstalled the VMware tools and rebooted, and then the errors disappeared.
+I had the same experience he had; I reinstalled the VMware tools and rebooted, and then the errors disappeared.
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: it works fine for me on VirtualBox
+it works fine for me on VirtualBox
+Rodny Molina
+RMMessage from Rodny Molina: When you have a chance at the end of the day, can you please provide the KVM 'adaptation' you did to run the VMs? Would be nice to rely on KVM to save the Virtual-Box / VMware installation.
+When you have a chance at the end of the day, can you please provide the KVM 'adaptation' you did to run the VMs? Would be nice to rely on KVM to save the Virtual-Box / VMware installation.
+Message from Rodny Molina: got it! Thanks.
+got it! Thanks.
+You sent: 11:15 central
+11:15 central
+Nikos
+NMessage from Nikos: is this already part of the VM?
+is this already part of the VM?
+Isaac Elbaz
+IEMessage from Isaac Elbaz: there's some in /usr/src/linux-stable
+there's some in /usr/src/linux-stable
+You sent: https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.3.tar.xz
+https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.3.tar.xz
+Nikos
+NMessage from Nikos: so download the tarball or use git to fetch it?
+so download the tarball or use git to fetch it?
+You sent: https://training.linuxfoundation.org/cm/LFD420/
+https://training.linuxfoundation.org/cm/LFD420/
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: config is part of VM
+config is part of VM
+You sent: cd ${STAGING_DIR}/s_02echo "+ tar xf linux-${KERNEL_VER}.tar.xz"tar xf linux-${KERNEL_VER}.tar.xzecho "+ cp config-${KERNEL_CONFIG}_x86_64 linux-${KERNEL_VER}/.config"cp config-${KERNEL_CONFIG}_x86_64 linux-${KERNEL_VER}/.configecho "+ cd linux-${KERNEL_VER}"cd linux-${KERNEL_VER}echo "+ ../DO_KERNEL.sh"../DO_KERNEL.sh
+cd ${STAGING_DIR}/s_02echo "+ tar xf linux-${KERNEL_VER}.tar.xz"tar xf linux-${KERNEL_VER}.tar.xzecho "+ cp config-${KERNEL_CONFIG}_x86_64 linux-${KERNEL_VER}/.config"cp config-${KERNEL_CONFIG}_x86_64 linux-${KERNEL_VER}/.configecho "+ cd linux-${KERNEL_VER}"cd linux-${KERNEL_VER}echo "+ ../DO_KERNEL.sh"../DO_KERNEL.sh
+You sent: https://pastebin.com/6dm5QTmm
+https://pastebin.com/6dm5QTmm
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: do we need sudo to run DO_KERNEL.sh?
+do we need sudo to run DO_KERNEL.sh?
+Message from Zhenggen  Xu: + make -j 6 modules_installmkdir: cannot create directory ‘/lib/modules/4.13.3’: Permission deniedMakefile:1238: recipe for target '_modinst_' failed
++ make -j 6 modules_installmkdir: cannot create directory ‘/lib/modules/4.13.3’: Permission deniedMakefile:1238: recipe for target '_modinst_' failed
+Nikos
+NMessage from Nikos: is the kernel written with such considerations i mind?
+is the kernel written with such considerations i mind?
+Message from Nikos: for cache lines, prefetching etc...
+for cache lines, prefetching etc...
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Are there guidelines for avoiding unintented usage of `printk` revealing internal kernel addresses (i.e., assisting in KASLR bypass)?
+Are there guidelines for avoiding unintented usage of `printk` revealing internal kernel addresses (i.e., assisting in KASLR bypass)?
+Nikos
+NMessage from Nikos: so the kernel has no way of bypassing all this for a task/process? and kill as it sees fit?
+so the kernel has no way of bypassing all this for a task/process? and kill as it sees fit?
+Message from Nikos: no watchdog timeouts for a task etc...
+no watchdog timeouts for a task etc...
+Message from Nikos: ok
+ok
+Srivaths
+SMessage from Srivaths: what is the diff. netween kmalloc and get_free_pages
+what is the diff. netween kmalloc and get_free_pages
+Message from Srivaths: any guidelines on when to use what
+any guidelines on when to use what
+Message from Srivaths: ok got it thanks
+ok got it thanks
+You sent: https://www.kernel.org/doc/html/v4.13/dev-tools/sparse.html
+https://www.kernel.org/doc/html/v4.13/dev-tools/sparse.html
+You sent: https://kernelnewbies.org/Sparse
+https://kernelnewbies.org/Sparse
+Rodny Molina
+RMMessage from Rodny Molina: You are describing the classical 32-bits arch example (3GB virtual-add-space for user-space and 1GB for kernel). Can you please go through 64-bits picture looks like nowadays?
+You are describing the classical 32-bits arch example (3GB virtual-add-space for user-space and 1GB for kernel). Can you please go through 64-bits picture looks like nowadays?
+Message from Rodny Molina: are  kernel linear-address still mapped starting at 0xC000*** ?
+are  kernel linear-address still mapped starting at 0xC000*** ?
+Message from Rodny Molina: ok
+ok
+Nikos
+NMessage from Nikos: ok
+ok
+You sent: 14:00
+14:00
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Thank you (3PM EST)
+Thank you (3PM EST)
+You sent: Cntral
+Cntral
+Nikos
+NMessage from Nikos: anyone knows how to copy/paste in and out of the VM?
+anyone knows how to copy/paste in and out of the VM?
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: scp
+scp
+Nikos
+NMessage from Nikos: ok - will try and figure out how to ssh in and out of it
+ok - will try and figure out how to ssh in and out of it
+Rodny Molina
+RMMessage from Rodny Molina: Nikos, install a port-forwarding rule in your Hypervisor to allow you to ssh into the VM
+Nikos, install a port-forwarding rule in your Hypervisor to allow you to ssh into the VM
+Nikos
+NMessage from Nikos: mac
+mac
+Rodny Molina
+RMMessage from Rodny Molina: openssh is already installed, only a port-forwarding rule is missing to bypass the NAT stuff
+openssh is already installed, only a port-forwarding rule is missing to bypass the NAT stuff
+Zhenggen Xu
+ZXMessage from Zhenggen  Xu: if you are talking about the clipboard. With VM additions installed, clipboard can be shared
+if you are talking about the clipboard. With VM additions installed, clipboard can be shared
+Sadaf Fardeen
+SFMessage from Sadaf Fardeen: do we have online version of training text document?
+do we have online version of training text document?
+You sent: nope
+nope
+Isaac Elbaz
+IEMessage from Isaac Elbaz: @Robert, in the kernel, I often stumble across pointers tagged with `__user`. Is the purpose of that strictly for awareness, or there are pre-processing tools that will make sure such pointers can be accessed through a prior call to a sanitizer such as copy_from_user?
+@Robert, in the kernel, I often stumble across pointers tagged with `__user`. Is the purpose of that strictly for awareness, or there are pre-processing tools that will make sure such pointers can be accessed through a prior call to a sanitizer such as copy_from_user?
+You sent: like here?
+like here?
+You sent: 36  static inline int copy_from_user(void *to, const void __user volatile *from,37  				 unsigned long n)
+36  static inline int copy_from_user(void *to, const void __user volatile *from,37  				 unsigned long n)
+Isaac Elbaz
+IEMessage from Isaac Elbaz: yeah, or https://elixir.free-electrons.com/linux/latest/source/fs/open.c#L1115
+yeah, or https://elixir.free-electrons.com/linux/latest/source/fs/open.c#L1115
+Nikos
+NMessage from Nikos: I think you
+I think you
+Message from Nikos: are not meant to dereference the __user pointers
+are not meant to dereference the __user pointers
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Thanks @Nikos
+Thanks @Nikos
+Message from Isaac Elbaz: Thanks
+Thanks
+Nikos
+NMessage from Nikos: so the copy functions do access the memory at the __user location
+so the copy functions do access the memory at the __user location
+Message from Nikos: so why say do not dereference?
+so why say do not dereference?
+Isaac Elbaz
+IEMessage from Isaac Elbaz: This is also interesting: https://lwn.net/Articles/695991/ some new checks may be arriving in mainline.
+This is also interesting: https://lwn.net/Articles/695991/ some new checks may be arriving in mainline.
+Srivaths
+SMessage from Srivaths: Is there any tool which I can use to measure memory bandwidth
+Is there any tool which I can use to measure memory bandwidth
+Message from Srivaths: when I'm running stress-ng for example
+when I'm running stress-ng for example
+You sent: http://www.brendangregg.com/linuxperf.html
+http://www.brendangregg.com/linuxperf.html
+You sent: http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html
+http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html
+Rodny Molina
+RMMessage from Rodny Molina: Just to make sure i got that right. In 2.x and 3.x i remember being able to build my modules by relying on kernel-headers. Are you saying that now we need the entire source-dir?
+Just to make sure i got that right. In 2.x and 3.x i remember being able to build my modules by relying on kernel-headers. Are you saying that now we need the entire source-dir?
+Message from Rodny Molina: ok, no change in this front, i missunderstood the text, thanks.
+ok, no change in this front, i missunderstood the text, thanks.
+Isaac Elbaz
+IEMessage from Isaac Elbaz: can you force the kernel NOT to allow unsigned modules to be loaded?
+can you force the kernel NOT to allow unsigned modules to be loaded?
+Message from Isaac Elbaz: Ok, I googled it, I think `CONFIG_MODULE_SIG_FORCE` does that.
+Ok, I googled it, I think `CONFIG_MODULE_SIG_FORCE` does that.
+Message from Isaac Elbaz: Agreed, it's just "defense in depth".
+Agreed, it's just "defense in depth".
+Nikos
+NMessage from Nikos: but it's a module - so what? :-)
+but it's a module - so what? 
+Message from Nikos: from a kernel's perspective not a lawyer's one
+from a kernel's perspective not a lawyer's one
+Srivaths
+SMessage from Srivaths: sometimes I have to kill the user space process which is using a module. After killing, If I try to do rmmod on the module, I get errpr saying device under use. Is there a way to force unload the module, except for rebooting the system :)?
+sometimes I have to kill the user space process which is using a module. After killing, If I try to do rmmod on the module, I get errpr saying device under use. Is there a way to force unload the module, except for rebooting the system ?
+Rodny Molina
+RMMessage from Rodny Molina: -f, --force
+-f, --force
+Srivaths
+SMessage from Srivaths: it does not work as the use count is not zero
+it does not work as the use count is not zero
+Isaac Elbaz
+IEMessage from Isaac Elbaz: Is your kernel configured with `CONFIG_MODULE_FORCE_UNLOAD`?
+Is your kernel configured with `CONFIG_MODULE_FORCE_UNLOAD`?
+Srivaths
+SMessage from Srivaths: let me check that.
+let me check that.
+Message from Srivaths: thanks
+thanks
+Rodny Molina
+RMMessage from Rodny Molina: https://www.spinics.net/lists/newbies/msg10926.html
+https://www.spinics.net/lists/newbies/msg10926.html
+Isaac Elbaz
+IEMessage from Isaac Elbaz: does the module ref count directly translates to a fdesc ref count?
+does the module ref count directly translates to a fdesc ref count?
+Message from Isaac Elbaz: ok
+ok
+Nikos
+NMessage from Nikos: we don't have those tools
+we don't have those tools
+Message from Nikos: I don't see anything under s_05
+I don't see anything under s_05
+Srivaths
+SMessage from Srivaths: you need to run the make
+you need to run the make
+Nikos
+NMessage from Nikos: I did
+I did
+Message from Nikos: the tools are not there
+the tools are not there
+Srivaths
+SMessage from Srivaths: then you will see the *.ko files..no *.sh files
+then you will see the *.ko files..no *.sh files
+Message from Srivaths: you need to manually insert using insmod
+you need to manually insert using insmod
+Nikos
+NMessage from Nikos: no .sh files
+no .sh files
+Rodny Molina
+RMMessage from Rodny Molina: +1 move on
++1 move on
+Nikos
+NMessage from Nikos: is the presentation frozen?
+is the presentation frozen?
+Message from Nikos: ok
+ok
+Isaac Elbaz
+IEMessage from Isaac Elbaz: cccccchkftflvehjtevneenfdkfhffjtgccerinkjfuc
+cccccchkftflvehjtevneenfdkfhffjtgccerinkjfuc
+Message from Isaac Elbaz: Thank you for your time.
+Thank you for your time.
+Nikos
+NMessage from Nikos: thank you
+thank you
+Udita
+UMessage from Udita: Thank you!
+Thank you!
+Srivaths
+SMessage from Srivaths: thanks and see you tomorrow
+thanks and see you tomorrow
+
