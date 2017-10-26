@@ -1,0 +1,82 @@
+From b6b58f4cf34f7b30f0df6e75a053540c265dafa8 Mon Sep 17 00:00:00 2001
+From: Robert Berger <rber.git@ReliableEmbeddedSystems.com>
+Date: Thu, 17 Nov 2011 15:21:02 +0200
+Subject: [PATCH] added new syscall
+
+
+Signed-off-by: Robert Berger <rber.git@ReliableEmbeddedSystems.com>
+---
+ arch/x86/include/asm/unistd_32.h   |    3 ++-
+ arch/x86/include/asm/unistd_64.h   |    2 ++
+ arch/x86/kernel/syscall_table_32.S |    1 +
+ kernel/sys.c                       |   18 ++++++++++++++++++
+ 4 files changed, 23 insertions(+), 1 deletions(-)
+
+diff --git a/arch/x86/include/asm/unistd_32.h b/arch/x86/include/asm/unistd_32.h
+index 593485b..fa48bd2 100644
+--- a/arch/x86/include/asm/unistd_32.h
++++ b/arch/x86/include/asm/unistd_32.h
+@@ -352,10 +352,11 @@
+ #define __NR_syncfs             344
+ #define __NR_sendmmsg		345
+ #define __NR_setns		346
++#define __NR_my_syscall         347
+ 
+ #ifdef __KERNEL__
+ 
+-#define NR_syscalls 347
++#define NR_syscalls 348
+ 
+ #define __ARCH_WANT_IPC_PARSE_VERSION
+ #define __ARCH_WANT_OLD_READDIR
+diff --git a/arch/x86/include/asm/unistd_64.h b/arch/x86/include/asm/unistd_64.h
+index 2010405..9439c8c 100644
+--- a/arch/x86/include/asm/unistd_64.h
++++ b/arch/x86/include/asm/unistd_64.h
+@@ -683,6 +683,8 @@ __SYSCALL(__NR_sendmmsg, sys_sendmmsg)
+ __SYSCALL(__NR_setns, sys_setns)
+ #define __NR_getcpu				309
+ __SYSCALL(__NR_getcpu, sys_getcpu)
++#define __NR_my_syscall                         310
++__SYSCALL(__NR_my_syscall, sys_my_syscall)
+ 
+ #ifndef __NO_STUBS
+ #define __ARCH_WANT_OLD_READDIR
+diff --git a/arch/x86/kernel/syscall_table_32.S b/arch/x86/kernel/syscall_table_32.S
+index bc19be3..5cdfdde 100644
+--- a/arch/x86/kernel/syscall_table_32.S
++++ b/arch/x86/kernel/syscall_table_32.S
+@@ -346,3 +346,4 @@ ENTRY(sys_call_table)
+ 	.long sys_syncfs
+ 	.long sys_sendmmsg		/* 345 */
+ 	.long sys_setns
++        .long sys_my_syscall            /* 347 */
+diff --git a/kernel/sys.c b/kernel/sys.c
+index 1dbbe69..89f6003 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -1913,3 +1913,21 @@ int orderly_poweroff(bool force)
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(orderly_poweroff);
++
++
++/* Adding a dynamical system call */
++struct my_sc_struct {
++       long (*fun) (unsigned long p1);
++} my_sc = {
++NULL};
++EXPORT_SYMBOL(my_sc);
++
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++       struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++       printk(KERN_INFO "Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++              p1, jiffies);
++       if (!s || !s->fun)
++               return -ENOSYS;
++       return s->fun(p1);
++}
+-- 
+1.7.4.1
+

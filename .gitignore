@@ -167,3 +167,9 @@ apue.3e/threads/cleanup
 apue.3e/threads/exitstatus
 apue.3e/threads/threadid
 apue.3e/threads/timedlock 
+
+
+# custom 
+\._*.*
+\._\.*
+\._*

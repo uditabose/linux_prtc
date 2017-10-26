@@ -1,0 +1,61 @@
+Signed-off-by: Jerry Cooperstein <coop@linuxfoundation.com>
+
+diff -Nur linux-2.6.29/arch/x86/include/asm/unistd_32.h linux-2.6.29_patched/arch/x86/include/asm/unistd_32.h
+--- linux-2.6.29/arch/x86/include/asm/unistd_32.h	2009-03-23 16:12:14.000000000 -0700
++++ linux-2.6.29_patched/arch/x86/include/asm/unistd_32.h	2009-03-31 14:46:18.000000000 -0700
+@@ -338,6 +338,7 @@
+ #define __NR_dup3		330
+ #define __NR_pipe2		331
+ #define __NR_inotify_init1	332
++#define __NR_my_syscall 333
+ 
+ #ifdef __KERNEL__
+ 
+diff -Nur linux-2.6.29/arch/x86/include/asm/unistd_64.h linux-2.6.29_patched/arch/x86/include/asm/unistd_64.h
+--- linux-2.6.29/arch/x86/include/asm/unistd_64.h	2009-03-23 16:12:14.000000000 -0700
++++ linux-2.6.29_patched/arch/x86/include/asm/unistd_64.h	2009-03-31 14:47:22.000000000 -0700
+@@ -653,6 +653,8 @@
+ __SYSCALL(__NR_pipe2, sys_pipe2)
+ #define __NR_inotify_init1			294
+ __SYSCALL(__NR_inotify_init1, sys_inotify_init1)
++#define __NR_my_syscall			295
++__SYSCALL(__NR_my_syscall, sys_my_syscall)
+ 
+ 
+ #ifndef __NO_STUBS
+diff -Nur linux-2.6.29/arch/x86/kernel/syscall_table_32.S linux-2.6.29_patched/arch/x86/kernel/syscall_table_32.S
+--- linux-2.6.29/arch/x86/kernel/syscall_table_32.S	2009-03-23 16:12:14.000000000 -0700
++++ linux-2.6.29_patched/arch/x86/kernel/syscall_table_32.S	2009-03-31 14:51:54.000000000 -0700
+@@ -332,3 +332,5 @@
+ 	.long sys_dup3			/* 330 */
+ 	.long sys_pipe2
+ 	.long sys_inotify_init1
++	.long sys_my_syscall
++
+diff -Nur linux-2.6.29/kernel/sys.c linux-2.6.29_patched/kernel/sys.c
+--- linux-2.6.29/kernel/sys.c	2009-03-23 16:12:14.000000000 -0700
++++ linux-2.6.29_patched/kernel/sys.c	2009-03-31 14:50:08.000000000 -0700
+@@ -1887,3 +1887,23 @@
+ 	return ret;
+ }
+ EXPORT_SYMBOL_GPL(orderly_poweroff);
++
++/* Adding a dynamical system call */
++
++struct my_sc_struct{
++    long (*fun) (unsigned long p1);
++}  my_sc = {NULL};
++EXPORT_SYMBOL(my_sc);
++
++/* for kernels before 2.6.29 use this
++   asmlinkage long sys_my_syscall(unsigned long p1)
++*/
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++    struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++    printk(KERN_INFO "Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++	p1, jiffies);
++    if (!s || !s->fun)
++	return -ENOSYS;
++    return s->fun(p1);
++}

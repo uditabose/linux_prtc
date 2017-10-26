@@ -1,0 +1,48 @@
+Signed-off-by: Jerry Cooperstein <coop@linuxfoundation.org>
+
+diff -Nur linux-4.2/arch/x86/entry/syscalls/syscall_32.tbl linux-4.2_PATCHED/arch/x86/entry/syscalls/syscall_32.tbl
+--- linux-4.2/arch/x86/entry/syscalls/syscall_32.tbl	2015-08-30 13:34:09.000000000 -0500
++++ linux-4.2_PATCHED/arch/x86/entry/syscalls/syscall_32.tbl	2015-09-08 17:21:06.701838855 -0500
+@@ -365,3 +365,4 @@
+ 356	i386	memfd_create		sys_memfd_create
+ 357	i386	bpf			sys_bpf
+ 358	i386	execveat		sys_execveat			stub32_execveat
++359     i386    my_syscall              sys_my_syscall
+\ No newline at end of file
+diff -Nur linux-4.2/arch/x86/entry/syscalls/syscall_64.tbl linux-4.2_PATCHED/arch/x86/entry/syscalls/syscall_64.tbl
+--- linux-4.2/arch/x86/entry/syscalls/syscall_64.tbl	2015-08-30 13:34:09.000000000 -0500
++++ linux-4.2_PATCHED/arch/x86/entry/syscalls/syscall_64.tbl	2015-09-08 17:21:35.920192346 -0500
+@@ -329,7 +329,7 @@
+ 320	common	kexec_file_load		sys_kexec_file_load
+ 321	common	bpf			sys_bpf
+ 322	64	execveat		stub_execveat
+-
++323	common  my_syscall              sys_my_syscall
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact
+ # for native 64-bit operation.
+diff -Nur linux-4.2/kernel/sys.c linux-4.2_PATCHED/kernel/sys.c
+--- linux-4.2/kernel/sys.c	2015-08-30 13:34:09.000000000 -0500
++++ linux-4.2_PATCHED/kernel/sys.c	2015-09-08 17:27:53.810768834 -0500
+@@ -2430,3 +2430,21 @@
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++/* Adding a dynamical system call */
++struct my_sc_struct {
++	long (*fun)(unsigned long p1);
++} my_sc = {
++	NULL};
++EXPORT_SYMBOL(my_sc);
++
++SYSCALL_DEFINE1(my_syscall, unsigned long, p1)
++{
++	struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++
++	pr_info("Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++		p1, jiffies);
++	if (!s || !s->fun)
++		return -ENOSYS;
++	return s->fun(p1);
++}

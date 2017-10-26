@@ -1,0 +1,53 @@
+From b3077d1a19edf8ce3164b963522e40ba563194c3 Mon Sep 17 00:00:00 2001
+From: Robert Berger <robert.berger@ReliableEmbeddedSystems.com>
+Date: Wed, 9 Nov 2011 11:12:37 +0200
+Subject: [PATCH] fix kernel warning to use tracing_on instead of
+ tracing_enabled
+
+
+Signed-off-by: Robert Berger <robert.berger@ReliableEmbeddedSystems.com>
+---
+ src/fsync.c |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/fsync.c b/src/fsync.c
+index 1706571..82dff0e 100644
+--- a/src/fsync.c
++++ b/src/fsync.c
+@@ -149,19 +149,19 @@ int enable_fsync_tracer(void)
+  * cd /sys/kernel/debug/tracing
+  * echo fsync > current_tracer
+  * echo ftrace_printk > iter_ctrl 
+- * echo 1 > tracing_enabled
++ * echo 1 > tracing_on
+  */
+ 	ret = system("/bin/mount -t debugfs none /sys/kernel/debug/");
+ 	if (!ret) 
+ 		return -1;
+ 	write_to_file("/sys/kernel/debug/tracing/current_tracer", "fsync");	
+ 	write_to_file("/sys/kernel/debug/tracing/iter_ctrl", "ftrace_printk");	
+-	write_to_file("/sys/kernel/debug/tracing/tracing_enabled", "1");
++	write_to_file("/sys/kernel/debug/tracing/tracing_on", "1");
+ }
+ 
+ int disable_fsync_tracer(void)
+ {
+-	write_to_file("/sys/kernel/debug/tracing/tracing_enabled", "0");
++	write_to_file("/sys/kernel/debug/tracing/tracing_on", "0");
+ }
+ 
+ 
+@@ -339,8 +339,8 @@ int fsync_display(int duration)
+ 		if (curduration > 5)
+ 			curduration = 5;
+ 		/* clear the ftrace buffer */
+-		write_to_file("/sys/kernel/debug/tracing/tracing_enabled", "0");
+-		write_to_file("/sys/kernel/debug/tracing/tracing_enabled", "1");
++		write_to_file("/sys/kernel/debug/tracing/tracing_on", "0");
++		write_to_file("/sys/kernel/debug/tracing/tracing_on", "1");
+ 		key = select(1, &rfds, NULL, NULL, &end);
+ 		parse_ftrace();
+ 		print_global_list();
+-- 
+1.7.5.4
+

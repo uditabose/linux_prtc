@@ -1,0 +1,1 @@
+vim /etc/sysctl.conf

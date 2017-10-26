@@ -1,0 +1,69 @@
+Signed-off-by: Jerry Cooperstein <coop@linuxfoundation.com>
+
+diff -Naur linux-2.6.18/arch/i386/kernel/syscall_table.S linux-2.6.18_patched/arch/i386/kernel/syscall_table.S
+--- linux-2.6.18/arch/i386/kernel/syscall_table.S	       2006-09-19 22:42:06.000000000 -0500
++++ linux-2.6.18_patched/arch/i386/kernel/syscall_table.S	2006-09-22 10:06:51.000000000 -0500
+@@ -317,3 +317,4 @@
+ 	.long sys_tee			/* 315 */
+ 	.long sys_vmsplice
+ 	.long sys_move_pages
++	.long sys_my_syscall
+diff -Naur linux-2.6.18/include/asm-i386/unistd.h linux-2.6.18_patched/include/asm-i386/unistd.h
+--- linux-2.6.18/include/asm-i386/unistd.h	        2006-09-19 22:42:06.000000000 -0500
++++ linux-2.6.18_patched/include/asm-i386/unistd.h	2006-09-22 10:08:39.000000000 -0500
+@@ -323,10 +323,11 @@
+ #define __NR_tee		315
+ #define __NR_vmsplice		316
+ #define __NR_move_pages		317
++#define __NR_my_syscall     318
+
+ #ifdef __KERNEL__
+
+-#define NR_syscalls 318
++#define NR_syscalls 319
+
+ /*
+  * user-visible error numbers are in the range -1 - -128: see
+diff -Naur linux-2.6.18/include/asm-x86_64/unistd.h linux-2.6.18_patched/include/asm-x86_64/unistd.h
+--- linux-2.6.18/include/asm-x86_64/unistd.h	        2006-09-19 22:42:06.000000000 -0500
++++ linux-2.6.18_patched/include/asm-x86_64/unistd.h	2006-09-22 10:11:50.000000000 -0500
+@@ -619,10 +619,12 @@
+ __SYSCALL(__NR_vmsplice, sys_vmsplice)
+ #define __NR_move_pages		279
+ __SYSCALL(__NR_move_pages, sys_move_pages)
++#define __NR_my_syscall		280
++__SYSCALL(__NR_my_syscall, sys_my_syscall)
+
+ #ifdef __KERNEL__
+
+-#define __NR_syscall_max __NR_move_pages
++#define __NR_syscall_max __NR_my_syscall
+
+ #ifndef __NO_STUBS
+
+diff -Naur linux-2.6.18/kernel/sys.c linux-2.6.18_patched/kernel/sys.c
+--- linux-2.6.18/kernel/sys.c	        2006-09-19 22:42:06.000000000 -0500
++++ linux-2.6.18_patched/kernel/sys.c	2006-09-22 10:11:48.000000000 -0500
+@@ -2062,3 +2062,22 @@
+ 	}
+ 	return error;
+ }
++
++/* Adding a dynamical system call */
++
++struct my_sc_struct
++{
++    long (*fun) (unsigned long p1);
++}  my_sc = {NULL};
++
++EXPORT_SYMBOL (my_sc);
++
++asmlinkage long sys_my_syscall (unsigned long p1)
++{
++    struct my_sc_struct *s = (struct my_sc_struct *)&my_sc;
++    printk ("Entering my_syscall with p1 = %ld at jiffies=%ld\n",
++            p1, jiffies);
++    if (!s || !s->fun)
++        return -ENOSYS;
++    return s->fun (p1);
++}
