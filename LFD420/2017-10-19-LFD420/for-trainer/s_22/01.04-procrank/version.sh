@@ -1,1 +1,0 @@
-CRASH_VERSION="master"

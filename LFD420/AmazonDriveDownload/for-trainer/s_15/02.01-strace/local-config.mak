@@ -1,1 +1,0 @@
-PROJECT_NAME=unnamed_sem_wait
