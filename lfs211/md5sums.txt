@@ -1,0 +1,2 @@
+69ab9ea6df15c6d8b4caa8533b6e2e13  LFS211_V1.0_SOLUTIONS.tar.bz2
+e4e9e899a26ca4d04923ace91403ad36  ready-for.sh
