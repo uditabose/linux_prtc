@@ -1,8 +1,12 @@
 #!/bin/bash
-
-# copy scripts to 
-
+source colors.sh
+# copy scripts to practice vm
 SHELL_FILE="$1"
+
+if [[ ! -f "$SHELL_FILE" ]]; then
+    echo -ne "$Red No shell file found $Color_Off\n"
+    exit -1
+fi
 # change file permission
 chmod +x "$SHELL_FILE"
 
