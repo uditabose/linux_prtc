@@ -1,0 +1,15 @@
+$TTL 30
+@ IN SOA localhost. admin.example.com. (
+2012092901 ; serial YYYYMMDDRR format
+3H ; refresh
+1H ; retry
+2H ; expire
+1M) ; neg ttl
+		 IN NS localhost.;
+www.example.com. IN A 192.168.111.45
+www.example.com. IN AAAA fe80::22c9:d0ff:1ecd:c0ef
+foo.example.com. IN A 192.168.121.11
+bar.example.com. IN CNAME www.example.com.
+
+;generate one hundred entries host1 thru host100
+$GENERATE 1-100 host$.example.com. IN A 10.20.45.$

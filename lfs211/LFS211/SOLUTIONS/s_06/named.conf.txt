@@ -1,0 +1,15 @@
+// add these lines to the bottom
+// named.conf.local (Ubuntu only) 
+// or named.conf (RHEL) as appropiate
+
+
+
+zone "example.com." IN {
+	type master;
+	file "example.com.zone";
+};
+
+zone "45.20.10.in-addr.arpa." IN {
+	type master;
+	file "45.20.10.in-addr.arpa.zone";
+};

@@ -1,0 +1,10 @@
+$TTL 30
+@ IN SOA localhost. admin.example.com. (
+2012092901 ; serial YYYYMMDDRR format
+3H ; refresh
+1H ; retry
+2H ; expire
+1M) ; neg ttl
+@ IN NS localhost.;
+;generate 1-254
+$GENERATE 1-254 $ IN PTR host$.example.com.
