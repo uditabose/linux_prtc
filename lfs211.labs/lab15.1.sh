@@ -16,7 +16,7 @@ service telnet
     user = root
     server = /usr/sbin/in.telnetd
 }
-    EOF
+EOF
 
     systemctl restart xinetd
     #telnet localhost
