@@ -1,0 +1,53 @@
+kill(1)                  - terminate or signal a process
+kill.d(1m)               - snoop process signals as they occur. Uses DTrace
+perlipc(1)               - Perl interprocess communication (signals, fifos, pipes, safe subprocesses, sockets, and semaphores)
+pgrep(1), pkill(1)       - find or signal processes by name
+sigdist.d(1m)            - signal distribution by process. Uses DTrace
+CURLOPT_NOSIGNAL(3)      - skip all signal handling
+Net::Server::SIG(3pm)    - adpf - Safer signal handling
+Tcl_SignalId(3tcl), Tcl_SignalMsg(3tcl) - Convert signal codes
+alarm(3)                 - set signal timer alarm
+bsd_signal(3)            - simplified signal facilities
+dispatch_semaphore_create(3), dispatch_semaphore_signal(3), dispatch_semaphore_wait(3) - synchronized counting semaphore
+glClientWaitSync(3G)     - block and wait for a sync object to become signaled
+glWaitSync(3G)           - instruct the GL server to block until the specified sync object becomes signaled
+kill(1)                  - terminate or signal a process
+kill(2)                  - send signal to a process
+kill.d(1m)               - snoop process signals as they occur. Uses DTrace
+killpg(2)                - send signal to a process group
+notify_post(3), notify_register_check(3), notify_register_dispatch(3), notify_register_signal(3), notify_register_mach_port(3), notify_register_file_descriptor(3), notify_check(3), notify_get_state(3), notify_set_state(3), notify_suspend(3), notify_resume(3), notify_cancel(3), notify_is_valid_token(3) - event distribution functions
+pause(3)                 - stop until signal
+perlipc(1)               - Perl interprocess communication (signals, fifos, pipes, safe subprocesses, sockets, and semaphores)
+pgrep(1), pkill(1)       - find or signal processes by name
+psignal(3), strsignal(3), strsignal_r(3), sys_siglist(3), sys_signame(3) - system signal messages
+pthread_cond_signal(3)   - unblock a thread waiting for a condition variable
+pthread_kill(2)          - send a signal to a specified thread
+pthread_sigmask(2)       - examine and/or change a thread's signal mask
+raise(3)                 - send a signal to the current thread
+sigaction(2)             - software signal facilities
+sigaddset(3), sigdelset(3), sigemptyset(3), sigfillset(3), sigismember(3) - manipulate signal sets
+sigaltstack(2)           - set and/or get signal stack context
+sigblock(2)              - block signals
+sigdist.d(1m)            - signal distribution by process. Uses DTrace
+siginterrupt(3)          - allow signals to interrupt system calls
+signal(3)                - simplified software signal facilities
+sigpause(2)              - atomically release blocked signals and wait for interrupt
+sigpending(2)            - get pending signals
+sigprocmask(2)           - manipulate current signal mask
+sigsetmask(2)            - set current signal mask
+sigstack(2)              - set and/or get signal stack context
+sigsuspend(2)            - atomically release blocked signals and wait for interrupt
+sigtrap(3pm)             - Perl pragma to enable simple signal handling
+sigvec(2)                - software signal facilities
+sigwait(2)               - select a set of signals
+ualarm(3)                - schedule signal after specified time
+
+
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL
+ 5) SIGTRAP	 6) SIGABRT	 7) SIGEMT	 8) SIGFPE
+ 9) SIGKILL	10) SIGBUS	11) SIGSEGV	12) SIGSYS
+13) SIGPIPE	14) SIGALRM	15) SIGTERM	16) SIGURG
+17) SIGSTOP	18) SIGTSTP	19) SIGCONT	20) SIGCHLD
+21) SIGTTIN	22) SIGTTOU	23) SIGIO	24) SIGXCPU
+25) SIGXFSZ	26) SIGVTALRM	27) SIGPROF	28) SIGWINCH
+29) SIGINFO	30) SIGUSR1	31) SIGUSR2	
